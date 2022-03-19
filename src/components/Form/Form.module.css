@@ -1,0 +1,88 @@
+.formContainer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 100%;
+	background: rgba(2, 2, 2, 0.678);
+	transition: 300ms;
+	opacity: 0;
+	visibility: hidden;
+	transition-delay: 300ms;
+}
+.open {
+	transition-delay: 0ms;
+	opacity: 1;
+	visibility: visible;
+}
+.form {
+	width: 80%;
+	max-width: 800px;
+	padding: 2rem 2rem;
+	background: rgb(248, 246, 246);
+	border-radius: 0.4rem;
+	transform: translateY(-100vh);
+	transition: 300ms;
+}
+.openForm {
+	transition-delay: 300ms;
+	transform: translateY(0);
+}
+.formTitle {
+	text-align: center;
+	margin-bottom: 1.5rem;
+	font-size: 1rem;
+}
+@media screen and (min-width: 992px) {
+	.formTitle {
+		font-size: 1.5rem;
+	}
+}
+.inputContainer {
+	display: flex;
+	flex-direction: column;
+	background: rgba(115, 178, 192, 0.192);
+	padding: 1rem;
+	margin-bottom: 1.2rem;
+	border-radius: 1.2rem;
+}
+.btnContainer {
+	margin-top: 2rem;
+	display: flex;
+	justify-content: flex-end;
+	gap: 2rem;
+}
+
+.formBtn {
+	background: none;
+	border: none;
+	outline: none;
+	width: 2.5rem;
+	height: 2.5rem;
+	cursor: pointer;
+	font-size: 2rem;
+	border-radius: 0.5rem;
+	transition-duration: 0.2s;
+}
+
+.formBtn:hover {
+	background: rgba(201, 198, 198, 0.781);
+}
+
+.input {
+	background: none;
+	border: none;
+	outline: none;
+	font-size: 1.1rem;
+	color: #161b16;
+	font-family: Poppins, sans-serif;
+	max-width: 100%;
+}
+label {
+	font-size: 0.9rem;
+	color: rgb(150, 150, 150);
+}

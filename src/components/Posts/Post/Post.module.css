@@ -1,0 +1,76 @@
+.post {
+	-webkit-box-shadow: 0px 4px 27px -7px rgba(66, 68, 90, 1);
+	-moz-box-shadow: 0px 4px 27px -7px rgba(66, 68, 90, 1);
+	box-shadow: 0px 4px 27px -7px rgba(66, 68, 90, 1);
+	max-width: 600px;
+	margin: auto;
+	background: white;
+	margin-bottom: 3rem;
+	border-radius: 0.5rem;
+	overflow: hidden;
+}
+@media screen and (min-width: 992px) {
+	.post {
+		width: 100%;
+		max-width: none;
+		margin: 0;
+	}
+}
+
+.imageContainer {
+	position: relative;
+	padding-bottom: 19rem;
+	overflow: hidden;
+}
+@media screen and (min-width: 1350px) {
+	.imageContainer {
+		padding-bottom: 28rem;
+	}
+}
+.image {
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+.content {
+	padding: 1.5rem;
+}
+.postTitle {
+	text-align: center;
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin-bottom: 2rem;
+}
+.postContent {
+	margin-bottom: 2rem;
+}
+.info {
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.8rem;
+	margin-bottom: 2rem;
+	font-weight: 500;
+}
+.author {
+	color: rgb(163, 162, 162);
+}
+.buttonsContainer {
+	display: flex;
+	justify-content: space-between;
+}
+.btn {
+	border: none;
+	outline: none;
+	background: none;
+	text-align: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	cursor: pointer;
+	border-radius: 12px;
+	font-size: 1.3rem;
+	transition-duration: 0.2s;
+}
+.btn:hover,
+.btn:focus {
+	background: rgba(177, 177, 177, 0.39);
+}
