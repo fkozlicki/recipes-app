@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Post from "./Post/Post";
+import Loader from "../Loader/Loader";
 
 import styles from "./Posts.module.css";
 
@@ -8,7 +9,7 @@ const Posts = ({ setCurrentId, setOpen }) => {
 	const posts = useSelector((state) => state.posts);
 
 	return !posts.length ? (
-		<h1>No posts available</h1>
+		<Loader />
 	) : (
 		<div className={styles.postsContainer}>
 			{posts.map((post, i) => (
