@@ -4,4 +4,4 @@
 
 ## Description
 
-Fullstack CRUD application - you can create, read, update and delete recipes. It is MERN application, I used MongoDB, Express, React and NodeJS. 
+Fullstack CRUD application - you can create, read, update and delete recipes. It is full-stack MERN application but I was mostly focused on frontend part, so it has all needed functionalities and sends request to backend. I also wanted it look good so it is styled with css modules and it is reponsive.
