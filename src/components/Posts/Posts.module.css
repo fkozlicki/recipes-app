@@ -1,9 +1,12 @@
+.postsContainer {
+	display: grid;
+	row-gap: 4rem;
+	align-items: start;
+	justify-content: center;
+}
 @media screen and (min-width: 992px) {
 	.postsContainer {
-		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		column-gap: 2rem;
-		row-gap: 4rem;
-		align-items: start;
 	}
 }

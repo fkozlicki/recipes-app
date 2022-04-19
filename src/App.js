@@ -45,13 +45,13 @@ const App = () => {
 				<div>
 					<Posts setCurrentId={setCurrentId} setOpen={setOpen} />
 				</div>
+				<Form
+					currentId={currentId}
+					setCurrentId={setCurrentId}
+					open={open}
+					setOpen={setOpen}
+				/>
 			</main>
-			<Form
-				currentId={currentId}
-				setCurrentId={setCurrentId}
-				open={open}
-				setOpen={setOpen}
-			/>
 		</>
 	);
 };

@@ -2,19 +2,12 @@
 	-webkit-box-shadow: 0px 4px 27px -7px rgba(66, 68, 90, 1);
 	-moz-box-shadow: 0px 4px 27px -7px rgba(66, 68, 90, 1);
 	box-shadow: 0px 4px 27px -7px rgba(66, 68, 90, 1);
-	max-width: 600px;
+	max-width: 550px;
 	margin: auto;
 	background: white;
 	margin-bottom: 3rem;
 	border-radius: 0.5rem;
 	overflow: hidden;
-}
-@media screen and (min-width: 992px) {
-	.post {
-		width: 100%;
-		max-width: none;
-		margin: 0;
-	}
 }
 
 .imageContainer {
@@ -22,11 +15,7 @@
 	padding-bottom: 19rem;
 	overflow: hidden;
 }
-@media screen and (min-width: 1350px) {
-	.imageContainer {
-		padding-bottom: 28rem;
-	}
-}
+
 .image {
 	position: absolute;
 	top: 0;
@@ -73,4 +62,16 @@
 .btn:hover,
 .btn:focus {
 	background: rgba(177, 177, 177, 0.39);
+}
+@media screen and (min-width: 992px) {
+	.post {
+		width: 100%;
+		max-width: none;
+		margin: 0;
+	}
+}
+@media screen and (min-width: 1350px) {
+	.imageContainer {
+		padding-bottom: 28rem;
+	}
 }
