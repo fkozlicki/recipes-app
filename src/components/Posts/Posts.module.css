@@ -1,12 +1,35 @@
-.postsContainer {
+.posts {
+	padding: 2rem 1rem;
+	max-width: 1100px;
+	margin: auto;
+}
+
+.add {
+	font-size: 1rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 1.5rem;
+	background: rgb(250, 214, 220);
+	padding: 0.5rem 1rem;
+	border-radius: 5rem;
+	transition: 100ms;
+}
+.add:hover {
+	background: rgb(245, 199, 207);
+}
+
+.grid {
 	display: grid;
 	row-gap: 4rem;
 	align-items: start;
 	justify-content: center;
 }
-@media screen and (min-width: 992px) {
-	.postsContainer {
+@media screen and (min-width: 768px) {
+	.grid {
 		grid-template-columns: repeat(2, 1fr);
 		column-gap: 2rem;
 	}
+}
+@media screen and (min-width: 1024px) {
 }
