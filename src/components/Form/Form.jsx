@@ -1,16 +1,18 @@
+// Hooks
 import React, { useState, useEffect } from "react";
-import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
-
+// Actions
 import { createPost, updatePost } from "../../actions/posts";
-
-import styles from "./Form.module.css";
+// FileBase
+import FileBase from "react-file-base64";
+// Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
-
-// Get the current id
+// Styles
+import styles from "./Form.module.css";
 
 const Form = ({ currentId, setCurrentId, open, setOpen }) => {
+	const [error, setError] = useState("");
 	const [postData, setPostData] = useState({
 		creator: "",
 		title: "",
@@ -18,6 +20,7 @@ const Form = ({ currentId, setCurrentId, open, setOpen }) => {
 		tags: "",
 		selectedFile: "",
 	});
+
 	const post = useSelector((state) =>
 		currentId ? state.posts.find((p) => p._id === currentId) : 0
 	);
@@ -27,26 +30,6 @@ const Form = ({ currentId, setCurrentId, open, setOpen }) => {
 	useEffect(() => {
 		if (post) setPostData(post);
 	}, [post]);
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-
-		if (
-			postData.creator &&
-			postData.title &&
-			postData.recipe &&
-			postData.tags &&
-			setPostData
-		) {
-			if (currentId === 0) {
-				dispatch(createPost(postData));
-				clear();
-			} else {
-				dispatch(updatePost(currentId, postData));
-				clear();
-			}
-		}
-	};
 
 	const clear = () => {
 		setPostData({
@@ -58,8 +41,38 @@ const Form = ({ currentId, setCurrentId, open, setOpen }) => {
 		});
 	};
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setError("");
+
+		if (
+			!postData.creator ||
+			!postData.title ||
+			!postData.recipe ||
+			!postData.tags ||
+			!postData.selectedFile
+		) {
+			setError("Fill all fields!");
+			return;
+		}
+
+		if (currentId === 0) {
+			dispatch(createPost(postData));
+		} else {
+			dispatch(updatePost(currentId, postData));
+		}
+		clear();
+	};
+
+	const handleClose = () => {
+		setError("");
+		setCurrentId(0);
+		clear();
+		setOpen(false);
+	};
+
 	return (
-		<div className={`${styles.formContainer}  ${open && styles.open}`}>
+		<div className={`${styles.modal}  ${open && styles.open}`}>
 			<form
 				onSubmit={handleSubmit}
 				className={`${styles.form} ${open && styles.openForm}`}
@@ -68,7 +81,9 @@ const Form = ({ currentId, setCurrentId, open, setOpen }) => {
 					{currentId ? "Editing" : "Creating"} a Recipe
 				</h1>
 				<div className={styles.inputContainer}>
-					<label htmlFor="author">Author</label>
+					<label className={styles.label} htmlFor="author">
+						Author
+					</label>
 					<input
 						className={styles.input}
 						type="text"
@@ -81,7 +96,9 @@ const Form = ({ currentId, setCurrentId, open, setOpen }) => {
 					/>
 				</div>
 				<div className={styles.inputContainer}>
-					<label htmlFor="title">Title</label>
+					<label className={styles.label} htmlFor="title">
+						Title
+					</label>
 					<input
 						className={styles.input}
 						type="text"
@@ -94,13 +111,15 @@ const Form = ({ currentId, setCurrentId, open, setOpen }) => {
 					/>
 				</div>
 				<div className={styles.inputContainer}>
-					<label htmlFor="recipe">Recipe</label>
+					<label className={styles.label} htmlFor="recipe">
+						Recipe
+					</label>
 					<textarea
-						className={styles.input}
+						className={`${styles.input} ${styles.textarea}`}
 						type="text"
 						name="recipe"
 						value={postData.recipe}
-						rows="5"
+						rows="4"
 						cols="8"
 						onChange={(e) =>
 							setPostData({ ...postData, recipe: e.target.value })
@@ -109,7 +128,9 @@ const Form = ({ currentId, setCurrentId, open, setOpen }) => {
 					/>
 				</div>
 				<div className={styles.inputContainer}>
-					<label htmlFor="tags">Tags</label>
+					<label className={styles.label} htmlFor="tags">
+						Tags
+					</label>
 					<input
 						className={styles.input}
 						type="text"
@@ -131,24 +152,19 @@ const Form = ({ currentId, setCurrentId, open, setOpen }) => {
 					/>
 				</div>
 				<div className={styles.btnContainer}>
-					<button
-						className={styles.formBtn}
-						type="submit"
-						onClick={() => setOpen(false)}
-					>
-						<FontAwesomeIcon icon={faCheck} color="#4BB543" />
-					</button>
-					<button
-						className={styles.formBtn}
-						type="button"
-						onClick={() => {
-							setCurrentId(0);
-							clear();
-							setOpen(false);
-						}}
-					>
-						<FontAwesomeIcon icon={faTimes} color="#CA0B00" />
-					</button>
+					<div className={styles.error}>{error}</div>
+					<div>
+						<button className={styles.formBtn} type="submit">
+							<FontAwesomeIcon icon={faCheck} color="#4BB543" />
+						</button>
+						<button
+							className={styles.formBtn}
+							type="button"
+							onClick={handleClose}
+						>
+							<FontAwesomeIcon icon={faTimes} color="#c00c00" />
+						</button>
+					</div>
 				</div>
 			</form>
 		</div>
